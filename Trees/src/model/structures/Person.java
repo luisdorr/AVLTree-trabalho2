@@ -48,6 +48,38 @@ public class Person {
         this.cityName = cityName;
     }
 
+    @Override
+    public String toString() {
+        return "Person [CPF=" + CPF + ", RG=" + RG + ", name=" + name + ", birthDay=" + birthDay + ", cityName="
+                + cityName + "]";
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((CPF == null) ? 0 : CPF.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Person other = (Person) obj;
+        if (CPF == null) {
+            if (other.CPF != null)
+                return false;
+        } else if (!CPF.equals(other.CPF))
+            return false;
+        return true;
+    }
+
+    
     
 
     
