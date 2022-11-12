@@ -8,12 +8,15 @@ public class Program {
     public static void main(String[] args) {
 
 
+        
+
+        /* 
         AVLTree<Integer> avore = new AVLTree<>(50);
         avore.add(55);
         
         
-        /*avore.add(57, avore.getRoot());
-        avore.add(70, avore.getRoot());*/
+        avore.add(57, avore.getRoot());
+        avore.add(70, avore.getRoot());
 
         System.out.println(avore.getBalanceFactorOf(avore.getRoot()));
         avore.printTree(avore.getRoot(), 0);
@@ -37,7 +40,7 @@ public class Program {
 
         System.out.println(avore.getBalanceFactorOf(avore.getRoot()));
         avore.printTree(avore.getRoot(), 0);
-        
+        */
     }
     
 }
