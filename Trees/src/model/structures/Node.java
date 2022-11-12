@@ -1,13 +1,16 @@
 package model.structures;
 
 import java.security.Key;
+import java.util.List;
 
 public class Node<T extends Comparable<T>> {
     private T key;
+    private List<Integer> indexes;
     private Node<T> leftChild, rightChild;
     
-    public Node(T key) {
+    public Node(T key, int index) {
         this.key = key;
+        this.indexes.add(index);
     }
 
     public T getKey() {
@@ -15,6 +18,16 @@ public class Node<T extends Comparable<T>> {
     }
     public void setKey(T key) {
         this.key = key;
+    }
+    public List<Integer> getIndexes() {
+        return indexes;
+    }
+    public void addIndex(int index){
+        for(int ind : this.indexes){
+            if (ind != index) {
+                this.indexes.add(index);
+            }
+        };
     }
     public Node<T> getLeftChild() {
         return leftChild;
@@ -39,6 +52,7 @@ public class Node<T extends Comparable<T>> {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((key == null) ? 0 : key.hashCode());
+        result = prime * result + ((indexes == null) ? 0 : indexes.hashCode());
         return result;
     }
 
@@ -56,6 +70,11 @@ public class Node<T extends Comparable<T>> {
                 return false;
         } else if (!key.equals(other.key))
             return false;
+        if (indexes == null) {
+            if (other.indexes != null)
+                return false;
+        } else if (!indexes.equals(other.indexes))
+            return false;
         return true;
     }
 
@@ -64,5 +83,5 @@ public class Node<T extends Comparable<T>> {
     
 
     
-    
+  
 }

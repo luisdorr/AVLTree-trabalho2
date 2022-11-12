@@ -1,15 +1,15 @@
 package model.structures;
 
+import java.util.List;
+
 public class AVLTree<T extends Comparable<T>> {
     private Node<T> root;
 
-    public AVLTree() {
+    public AVLTree() {}
+    public AVLTree(T key, int index) {
+        this.root = new Node<T>(key, index);
     }
-
-    public AVLTree(T key) {
-        this.root = new Node<T>(key);
-    }
-
+   
     public Node<T> getRoot() {
         return root;
     }
@@ -74,39 +74,53 @@ public class AVLTree<T extends Comparable<T>> {
         return root;
     }
 
-    public Node<T> add(T key, Node<T> root) 
+    public Node<T> add(T key, int index, Node<T> root) 
     {
         if (root == null) {
-            root = new Node<>(key);
+            root = new Node<>(key, index);
             return root;
         } else if (key.compareTo(root.getKey()) == -1) {
-            root.setLeftChild(add(key, root.getLeftChild()));
+            root.setLeftChild(add(key, index, root.getLeftChild()));
         } else if (key.compareTo(root.getKey()) == 1) {
-            root.setRightChild(add(key, root.getRightChild()));
-        } else {
-            System.out.println("ERROR,  THIS KEY ALREDY EXIST!");
+            root.setRightChild(add(key, index, root.getRightChild()));
+        } else if (key.compareTo(root.getKey()) == 0){
+            root.addIndex(index);
             return root;
         } 
         return balancingTheTree(root);
     }
 
-    public void add(T key) {
-        this.root = add(key,root);
+    public void add(T key, int index) {
+        this.root = add(key, index, root);
     }
 
-    public Node<T> getTheBiggestLeftChild(Node<T> root){
-        return goToTheRightChild(root.getLeftChild());
-    }
-
-    public Node<T> goToTheRightChild(Node<T> root) {
-        if (root.getRightChild() == null) {
-            return root;
+    public List<Integer> getIndexOf(T key, Node<T> root) {
+        if (root == null) {
+            return null;
+        } else if (key.compareTo(root.getKey()) == -1) {
+            return getIndexOf(key, root.getLeftChild());
+        } else if (key.compareTo(root.getKey()) == 1) {
+            return getIndexOf(key, root.getRightChild());
         } else {
-            return goToTheRightChild(root.getRightChild());
+            return root.getIndexes();
         }
     }
 
-    public Node<T> remove(T key, Node<T> root) 
+    public boolean search(T key, Node<T> root) 
+    {
+        if (root == null) {
+            return false;
+        } else if (key.compareTo(root.getKey()) == -1) {
+            return search(key, root.getLeftChild());
+        } else if (key.compareTo(root.getKey()) == 1) {
+            return search(key, root.getRightChild());
+        } else {
+            return true;
+        }
+    } 
+
+}
+/*public Node<T> remove(T key, Node<T> root) 
     {
         if (root == null) {
             System.out.println("This key is not in the tree.");
@@ -134,30 +148,19 @@ public class AVLTree<T extends Comparable<T>> {
 
     public void remove(T key) {
         this.root = remove(key, root);
-    }
-
-    public boolean search(T key, Node<T> root) 
-    {
-        if (root == null) {
-            return false;
-        } else if (key.compareTo(root.getKey()) == -1) {
-            return search(key, root.getLeftChild());
-        } else if (key.compareTo(root.getKey()) == 1) {
-            return search(key, root.getRightChild());
-        } else {
-            return true;
-        }
     } 
-
-    public String makeSpaces(int height)
-    {
-        String space = "";
-        for(int i = 0; i < height; i++) {
-            space = space + "    ";
-        }
-        return space;
+     public Node<T> getTheBiggestLeftChild(Node<T> root){
+        return goToTheRightChild(root.getLeftChild());
     }
 
+    public Node<T> goToTheRightChild(Node<T> root) {
+        if (root.getRightChild() == null) {
+            return root;
+        } else {
+            return goToTheRightChild(root.getRightChild());
+        }
+    }
+    
     public void printTree(Node<T> root, int height) 
     {
         if (root != null){
@@ -166,6 +169,14 @@ public class AVLTree<T extends Comparable<T>> {
             printTree(root.getLeftChild(),height);
             printTree(root.getRightChild(), height);
         }
+    }
+      public String makeSpaces(int height)
+    {
+        String space = "";
+        for(int i = 0; i < height; i++) {
+            space = space + "    ";
+        }
+        return space;
     }
 
     public void inOrder(Node<T> root) 
@@ -177,3 +188,4 @@ public class AVLTree<T extends Comparable<T>> {
         }
 	}
 }
+    */
