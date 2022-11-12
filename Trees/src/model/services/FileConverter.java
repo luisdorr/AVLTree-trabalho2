@@ -14,24 +14,25 @@ import model.structures.Person;
 
 public class FileConverter {
     
-    private static int countLines(String filePath ) {
+    public static int countLines(String filePath ) {
         int count = 0;
 
-        try (Scanner sc = new Scanner(filePath)) {
-        
-            while(sc.hasNextLine()) {
-                sc.nextLine();
-                count++;
-            }
+        try (BufferedReader buffer = new BufferedReader(new FileReader(filePath))) {
+            String line = buffer.readLine();
 
-        } catch (Exception e) {
-            e.getStackTrace();
+            while (line != null) {
+                count++;
+                line = buffer.readLine();
+            }
+            
+        } catch (IOException e){
+            System.out.println("Error: "+ e.getMessage());
         }
 
         return count;
     }
 
-    private static String[] toStrings(String filePath, int numberOfLines ) {
+    public static String[] toStrings(String filePath, int numberOfLines ) {
         String[] lines = new String[numberOfLines];
 
         try (BufferedReader buffer = new BufferedReader(new FileReader(filePath))) {
@@ -49,7 +50,7 @@ public class FileConverter {
         return lines;
     }
 
-    private static Person stringToPerson(String line) throws ParseException {
+    public static Person stringToPerson(String line) throws ParseException {
         String[] attributes = line.split(";");
             
         Long CPF = Long.parseLong(attributes[0]);

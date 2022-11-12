@@ -14,17 +14,11 @@ import model.structures.Person;
 public class Program {
 
     public static void main(String[] args) throws ParseException {
-        String filePath = "C:\\Users\\Luis Dorr\\OneDrive\\Área de Trabalho";
+        String filePath = "/Users/luisdorr/Documents/GitHub/AVLTree-trabalho2/Trees/src/teste.csv";
+        List<Person> people = FileConverter.toPeopleList(filePath);
+        System.out.println(people.get(0));
+        System.out.println(people.get(1));
         
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            String line = br.readLine();
-            while (line != null) {
-                System.out.println(line);
-                line = br.readLine();
-            }
-        } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
-        } 
 
 
 
