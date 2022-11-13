@@ -1,5 +1,8 @@
 package model.structures;
 
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.Date;
 
 public class Person {
@@ -10,8 +13,8 @@ public class Person {
     private String cityName;
     
     public Person(long cPF, long rG, String name, Date birthDay, String cityName) {
-        CPF = cPF;
-        RG = rG;
+        this.CPF = cPF;
+        this.RG = rG;
         this.name = name;
         this.birthDay = birthDay;
         this.cityName = cityName;
@@ -50,8 +53,13 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person [CPF=" + CPF + ", RG=" + RG + ", name=" + name + ", birthDay=" + birthDay + ", cityName="
-                + cityName + "]";
+        SimpleDateFormat sdf =  new SimpleDateFormat("dd/MM/yyyy");
+        return this.name.toUpperCase()
+                +"\nCPF: " + this.CPF+
+                "\nRG: " + this.RG +
+                "\nBirthDay: " + sdf.format(this.birthDay) +
+                "\nCityName: " + this.cityName  +
+                "\n-------------------------------------------------------------------------------------------";
     }
 
     @Override

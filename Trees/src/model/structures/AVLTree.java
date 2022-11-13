@@ -119,8 +119,7 @@ public class AVLTree<T extends Comparable<T>> {
         }
     } 
 
-}
-/*public Node<T> remove(T key, Node<T> root) 
+    public Node<T> remove(T key, Node<T> root) 
     {
         if (root == null) {
             System.out.println("This key is not in the tree.");
@@ -149,7 +148,8 @@ public class AVLTree<T extends Comparable<T>> {
     public void remove(T key) {
         this.root = remove(key, root);
     } 
-     public Node<T> getTheBiggestLeftChild(Node<T> root){
+    
+    public Node<T> getTheBiggestLeftChild(Node<T> root){
         return goToTheRightChild(root.getLeftChild());
     }
 
@@ -170,7 +170,8 @@ public class AVLTree<T extends Comparable<T>> {
             printTree(root.getRightChild(), height);
         }
     }
-      public String makeSpaces(int height)
+    
+    public String makeSpaces(int height)
     {
         String space = "";
         for(int i = 0; i < height; i++) {
@@ -188,4 +189,4 @@ public class AVLTree<T extends Comparable<T>> {
         }
 	}
 }
-    */
+    

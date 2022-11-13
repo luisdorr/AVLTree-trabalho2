@@ -10,14 +10,14 @@ import model.services.FileConverter;
 import model.structures.AVLTree;
 import model.structures.Node;
 import model.structures.Person;
+import model.structures.PersonAVLTree;
 
 public class Program {
 
     public static void main(String[] args) throws ParseException {
         String filePath = "/Users/luisdorr/Documents/GitHub/AVLTree-trabalho2/Trees/src/teste.csv";
         List<Person> people = FileConverter.toPeopleList(filePath);
-        System.out.println(people.get(0));
-        System.out.println(people.get(1));
+        System.out.println(new PersonAVLTree().toString());
         
 
 
