@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+import java.util.Scanner;
 
 import model.structures.Person;
 
@@ -62,8 +62,16 @@ public class FileConverter {
         return new Person(CPF, RG, personalName, birthDay, cityName);
     }
 
-    public static List<Person> toPeopleList(String filePath) throws ParseException {
+    public static String askForPath() {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("\nEnter your file path: ");
+        return scan.nextLine();
+    }
+
+    public static List<Person> toPeopleList() throws ParseException {
         List<Person> people = new ArrayList<>();
+        String filePath = askForPath();
+        
         int numberOfLines = countLines(filePath);
 
         String[] lines = toStrings(filePath, numberOfLines);
@@ -82,5 +90,6 @@ public class FileConverter {
         return people;
     }
 
+    
     
 }

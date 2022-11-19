@@ -1,10 +1,11 @@
 package model.structures;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Node<T extends Comparable<T>> {
     private T key;
-    private List<Integer> indexes;
+    private List<Integer> indexes = new ArrayList<>();
     private Node<T> leftChild, rightChild;
     
     public Node(T key, int index) {

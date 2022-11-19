@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 
+import menu.Tela;
 import model.services.FileConverter;
 import model.structures.AVLTree;
 import model.structures.Node;
@@ -15,9 +16,18 @@ import model.structures.PersonAVLTree;
 public class Program {
 
     public static void main(String[] args) throws ParseException {
-        String filePath = "/Users/luisdorr/Documents/GitHub/AVLTree-trabalho2/Trees/src/teste.csv";
-        List<Person> people = FileConverter.toPeopleList(filePath);
-        System.out.println(new PersonAVLTree().toString());
+        ///Users/luisdorr/Documents/GitHub/AVLTree-trabalho2/Trees/src/teste.csv
+        /*10987654322;44556602;Cicrana B;23/12/2972;São Leopoldo
+        10987654323;44556603;Cicrana celtrana Delgrana;24/12/2972;São Leopoldo
+        10987654324;44556604;Cicrana deltrana Delgrana;25/12/2972;São Leopoldo
+        10987654325;44556605;Cicrana feltrana Delgrana;26/12/2972;São Leopoldo */
+        //String a = "cicrana celtrana Delgrana";
+        //Integer a = 1;
+        //Integer b = 2;
+        //String b = "fulano";
+        //System.out.println(a.compareTo(b));
+        
+        Tela.imprime();
         
 
 

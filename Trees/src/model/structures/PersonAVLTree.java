@@ -14,7 +14,6 @@ public class PersonAVLTree<T extends Comparable<T>> extends AVLTree{
         super(key, index);
     }
 
-
     public List<Integer> searchForKey(T key, Node<T> root) {
         if (root == null) {
             return null;
@@ -39,10 +38,10 @@ public class PersonAVLTree<T extends Comparable<T>> extends AVLTree{
             return lookForTheString(key,  root.getRightChild(), lookForTheString(key, root.getLeftChild(), indexes));
 
         } else {
-            if (key.compareTo(root.getKey()) == -1) {
+            if (key.compareTo(root.getKey()) < 0) {
                 return lookForTheString(key, root.getLeftChild(), indexes);
 
-            } else if (key.compareTo(root.getKey()) == 1) {
+            } else if (key.compareTo(root.getKey()) > 0) {
                 return lookForTheString(key, root.getRightChild(), indexes);
 
             } else {
@@ -53,7 +52,7 @@ public class PersonAVLTree<T extends Comparable<T>> extends AVLTree{
     public List<Integer> lookForTheString(String string) {
         List<Integer> indexes = new ArrayList<>();
         
-        return lookForTheString(string, this.getRoot(), indexes);
+        return lookForTheString(string.toLowerCase(), this.getRoot(), indexes);
     }
 
     public List<Integer> lookForDate(Date inicialDate,  Date finalDate, Node<Date>  root, List<Integer> indexes) {
