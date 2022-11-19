@@ -55,20 +55,20 @@ public class PersonAVLTree<T extends Comparable<T>> extends AVLTree{
         return lookForTheString(string.toLowerCase(), this.getRoot(), indexes);
     }
 
-    public List<Integer> lookForDate(Date inicialDate,  Date finalDate, Node<Date>  root, List<Integer> indexes) {
+    public List<Integer> lookForDate(Date fisrtDate,  Date secondDate, Node<Date>  root, List<Integer> indexes) {
         if (root == null) {
             return indexes;
 
-        } else if (root.getKey().compareTo(inicialDate) >= 0 && root.getKey().compareTo(finalDate) <= 0) {
+        } else if (root.getKey().compareTo(fisrtDate) >= 0 && root.getKey().compareTo(secondDate) <= 0) {
             indexes.addAll(root.getIndexes());
-            return lookForDate(inicialDate, finalDate, root.getRightChild(), lookForDate(inicialDate, finalDate,  root.getLeftChild(), indexes));
+            return lookForDate(fisrtDate, secondDate, root.getRightChild(), lookForDate(fisrtDate, secondDate,  root.getLeftChild(), indexes));
 
         } else {
-            if (root.getKey().compareTo(inicialDate) == -1) {
-                return lookForDate(inicialDate, finalDate, root.getRightChild(), indexes);
+            if (root.getKey().compareTo(fisrtDate) == -1) {
+                return lookForDate(fisrtDate, secondDate, root.getRightChild(), indexes);
 
-            } else if (root.getKey().compareTo(finalDate) == 1) {
-                return lookForDate(inicialDate, finalDate, root.getLeftChild(), indexes);
+            } else if (root.getKey().compareTo(secondDate) == 1) {
+                return lookForDate(fisrtDate, secondDate, root.getLeftChild(), indexes);
 
             } else {
                 return indexes;
@@ -78,10 +78,12 @@ public class PersonAVLTree<T extends Comparable<T>> extends AVLTree{
     public List<Integer> lookForDate(String inicialDate,  String finalDate) throws ParseException {
         Date fisrtDate = new SimpleDateFormat("dd/MM/yyyy").parse(inicialDate);
         Date secondDate = new SimpleDateFormat("dd/MM/yyyy").parse(finalDate);
+        Node<Date> root = getRoot();
+        
 
         List<Integer> indexes = new ArrayList<>();
         
-        return lookForDate(fisrtDate, secondDate, getRoot(), indexes);
+        return lookForDate(fisrtDate, secondDate, root, indexes);
     }
 
     

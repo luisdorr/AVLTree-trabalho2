@@ -79,9 +79,9 @@ public class AVLTree<T extends Comparable<T>> {
         if (root == null) {
             root = new Node<>(key, index);
             return root;
-        } else if (key.compareTo(root.getKey()) == -1) {
+        } else if (key.compareTo(root.getKey()) < 0) {
             root.setLeftChild(add(key, index, root.getLeftChild()));
-        } else if (key.compareTo(root.getKey()) == 1) {
+        } else if (key.compareTo(root.getKey()) > 0) {
             root.setRightChild(add(key, index, root.getRightChild()));
         } else if (key.compareTo(root.getKey()) == 0){
             root.addIndex(index);

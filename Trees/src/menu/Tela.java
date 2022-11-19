@@ -23,10 +23,9 @@ public class Tela {
 		for (int i = 0; i < people.size(); i++) {
 			cpf.add(people.get(i).getCPF(), i);
 			data.add(people.get(i).getBirthDay(), i);
-			nome.add(people.get(i).getName(), i);
+			nome.add(people.get(i).getName().toLowerCase(), i);
 		}
-        cpf.inOrder(cpf.getRoot());
-        nome.inOrder(nome.getRoot());
+        
         boolean exit = false;
         do {
             System.out.println("Digite 1 para buscar CPF");
@@ -79,9 +78,9 @@ public class Tela {
         
                     System.out.println("Digite a primeira data:");
                     Scanner dateInitialInput = new Scanner(System.in);
+                    String date = dateInitialInput.nextLine();
                     System.out.println("Digite a segunda data:");
                     Scanner dateFinalInput = new Scanner(System.in);
-                    String date = dateInitialInput.nextLine();
                     String dateFinal = dateFinalInput.nextLine();
         
                     indexes = nome.lookForDate(date, dateFinal);
